@@ -21,10 +21,11 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-
-    var dancer = dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+    // console.log('this is dancer maker function', dancerMakerFunction);
+    var dancer = new dancerMakerFunction(
+      // ($("body").height() - 200px) * Math.random(),
+      500,
+      ($("body").width() - 300px) * Math.random(),
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
