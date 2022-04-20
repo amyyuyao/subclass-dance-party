@@ -1,40 +1,82 @@
-body, html{
-  height:100%;
+body,
+html {
+  height: 100%;
 }
-body{
-  margin: 0px;
+
+body {
+  /* margin: 0px; */
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-bottom: 1000px;
   background-image: url(./pics/Theater.jpeg);
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  overflow: hidden;
+  /* height: 1667px; */
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
   background-size: cover;
   font-size: 18px;
 }
-body, a:link, a:visited, a:active{
+
+body,
+a:link,
+a:visited,
+a:active {
   color: lightblue;
 }
-.title, .addDancerButton{
-  padding:5px 12px;
-  float:right;
+
+.title,
+.addDancerButton {
+  padding: 5px 12px;
+  float: right;
 }
-.topbar{
-  height:32px;
+
+.topbar {
+  height: 32px;
   background-color: #555;
 }
-.title{
+
+.title {
   background-color: #777;
 }
-.dancer{
+
+/* .dancer{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
-}
+} */
 
-.fade{
+.fade {
   max-height: fit-content;
-  position:absolute;
+  position: relative;
 }
 
-img{
-  height: 240px;
-  width: 200px;
+img {
+  height: 28%;
+  position: relative;
+  /* animation-name: drive;
+  animation-duration: 3s; */
+}
+
+/* @keyframes drive{
+  from{ transform: translateX(10%), translateY(60%)}
+  to{ transform: translateX(90%)}
+} */
+
+.flipped {
+  transform: scale(-1, 1);
+}
+
+.rotated {
+  transform: rotate(25deg);
+}
+
+.tilt {
+  transition: transform 2s;
+  height: 25%;
+}
+
+.tilt:hover {
+  transform: rotate(25deg);
 }

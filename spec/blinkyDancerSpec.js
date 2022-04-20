@@ -32,3 +32,45 @@ describe('blinkyDancer', function() {
     });
   });
 });
+
+describe('fadeDancer', function() {
+
+  var fadeDancer, clock;
+  var timeBetweenSteps = 100;
+
+  beforeEach(function() {
+    clock = sinon.useFakeTimers();
+    fadeDancer = new makeFadeDancer(10, 20, timeBetweenSteps);
+  });
+
+  it('should have a jQuery $node object', function() {
+    expect(fadeDancer.$node).to.be.an.instanceof(jQuery);
+  });
+
+  it('should have a constructor property set to makeFadeDancer', function() {
+    expect(fadeDancer.constructor).to.be.equal(makeFadeDancer);
+  })
+
+
+});
+
+describe('slideDancer', function() {
+
+  var slideDancer, clock;
+  var timeBetweenSteps = 100;
+
+  beforeEach(function() {
+    clock = sinon.useFakeTimers();
+    slideDancer = new makeSlideDancer(10, 20, timeBetweenSteps);
+  });
+
+  it('should have a jQuery $node object', function() {
+    expect(slideDancer.$node).to.be.an.instanceof(jQuery);
+  });
+
+  it('should have a constructor property set to makeSlideDancer', function() {
+    expect(slideDancer.constructor).to.be.equal(makeSlideDancer);
+  })
+
+
+});

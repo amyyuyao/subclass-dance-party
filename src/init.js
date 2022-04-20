@@ -1,34 +1,91 @@
 $(document).ready(function() {
   window.dancers = [];
+  window.dancerObjs = [];
 
   $('.addDancerButton').on('click', function(event) {
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on dancefloor.html. You should only need to make one small change to it.
-     * As long as the "data-dancer-maker-function-name" attribute of a
-     * class="addDancerButton" DOM node matches one of the names of the
-     * maker functions available in the global scope, clicking that node
-     * will call the function to make the dancer.
-     */
 
-    /* dancerMakerFunctionName is a string which must match
-     * one of the dancer maker functions available in global scope.
-     * A new object of the given type will be created and added
-     * to the stage.
-     */
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
 
-    // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
-    // make a dancer with a random position
-    // console.log('this is dancer maker function', dancerMakerFunction);
     var dancer = new dancerMakerFunction(
-      // ($("body").height() - 200px) * Math.random(),
-      500,
-      ($("body").width() - 300px) * Math.random(),
+      Math.random() * (600 - 450) + 450,
+      $("body").width() * Math.random(),
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+    window.dancers.push(dancer.$node);
+    window.dancerObjs.push(dancer);
+
+  });
+
+  var dancerSound = new Audio('./Nutcracker.mp3');
+
+  $('.lineUpDancers').on('click', function(event) {
+    if (!dancerSound2.paused) {
+      dancerSound2.pause();
+    }
+
+    var offset = 0;
+    var lastPose = 5;
+    var top = 40;
+
+    window.dancerObjs.forEach(function(elem, index, list) {
+      var len = dancerObjs.length;
+      offset = 80 / len;
+
+      if (index === 0) {
+        elem.$node.css({top: top + '%', left: lastPose + '%'});
+      } else {
+        lastPose += offset - 6;
+        if (lastPose > 80) {
+          top = 50;
+          lastPose = 5;
+        }
+        elem.$node.css({top: top + '%', left: lastPose + '%'});
+      }
+
+    //  console.log(window.dancerObjs[index-1].$node.css('left'));
+
+
+      elem.timeBetweenSteps = 1300;
+
+    });
+
+
+    if (!dancerSound.paused) {
+      dancerSound.pause();
+    } else {
+      dancerSound.play();
+    }
+
+  });
+
+  var dancerSound2 = new Audio('./Swanlake.mp3');
+
+  $('.FaceToFace').on('click', function(event) {
+    if (!dancerSound.paused) {
+      dancerSound.pause();
+    }
+    var offset = 650;
+
+    window.dancerObjs.forEach(function(elem, index, list) {
+      if (index % 2 === 1) {
+        elem.$node.css({top: offset += 30, left: 100});
+      } else {
+        elem.$node.css({top: offset += 30, left: 200});
+        offset -= 100
+      }
+
+      elem.timeBetweenSteps = 1300;
+
+    });
+
+    if (!dancerSound2.paused) {
+      dancerSound2.pause();
+    } else {
+      dancerSound2.play();
+    }
   });
 });
 
